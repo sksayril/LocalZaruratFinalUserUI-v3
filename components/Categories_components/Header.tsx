@@ -43,7 +43,16 @@ export default function Header() {
             {/* Free Listing with BUSINESS badge */}
             <div className="flex items-center space-x-1 text-sm font-medium">
               <List className="w-4 h-4" />
-              <a href="#" className="hover:text-blue-600 hidden md:block">Free Listing</a>
+              <a 
+                href="#" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.open('https://seller.localzarurat.com', '_blank');
+                }}
+                className="hover:text-blue-600 hidden md:block cursor-pointer"
+              >
+                Free Listing
+              </a>
               <span className="ml-1 px-1.5 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded align-middle hidden md:inline" style={{lineHeight: '1.1'}}>BUSINESS</span>
             </div>
             {/* Bell Icon */}
@@ -92,7 +101,12 @@ export default function Header() {
               </div>
               <div className="flex items-center space-x-2 text-sm font-medium py-2">
                 <List className="w-4 h-4" />
-                <span>Free Listing</span>
+                <span 
+                  onClick={() => window.open('https://seller.localzarurat.com', '_blank')}
+                  className="cursor-pointer"
+                >
+                  Free Listing
+                </span>
                 <span className="px-1.5 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded">BUSINESS</span>
               </div>
               <div className="flex items-center space-x-2 text-sm font-medium py-2">

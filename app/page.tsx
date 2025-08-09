@@ -4,14 +4,14 @@ import HeroSection from '@/components/Categories_components/HeroSection';
 import ServiceCategories from '@/components/Categories_components/ServiceCategories';
 import CategoryGrid from '@/components/Categories_components/CategoryGrid';
 import ServiceSections from '@/components/Categories_components/ServiceSections';
-import TravelSection from '@/components/Categories_components/TravelSection';
+// import TravelSection from '@/components/Categories_components/TravelSection';
 import TrendingSection from '@/components/Categories_components/TrendingSection';
-import MoviesSection from '@/components/Categories_components/MoviesSection';
-import TouristPlacesSection from '@/components/Categories_components/TouristPlacesSection';
+// import MoviesSection from '@/components/Categories_components/MoviesSection';
+// import TouristPlacesSection from '@/components/Categories_components/TouristPlacesSection';
 import PopularSearchesSection from '@/components/Categories_components/PopularSearchesSection';
-import RainyDaySection from '@/components/Categories_components/RainyDaySection';
-import RecentActivitySection from '@/components/Categories_components/RecentActivitySection';
-import RelatedArticlesSection from '@/components/Categories_components/RelatedArticlesSection';
+// import RainyDaySection from '@/components/Categories_components/RainyDaySection';
+// import RecentActivitySection from '@/components/Categories_components/RecentActivitySection';
+// import RelatedArticlesSection from '@/components/Categories_components/RelatedArticlesSection';
 import AboutSection from '@/components/Categories_components/AboutSection';
 import Footer from '@/components/Categories_components/Footer';
 
@@ -41,14 +41,14 @@ export default function Home() {
       <ServiceCategories />
       <CategoryGrid />
       <ServiceSections />
-      <TravelSection />
+      {/* <TravelSection /> */}
       <TrendingSection />
-      <MoviesSection />
-      <TouristPlacesSection />
+      {/* <MoviesSection /> */}
+      {/* <TouristPlacesSection /> */}
       <PopularSearchesSection />
-      <RainyDaySection />
-      <RecentActivitySection />
-      <RelatedArticlesSection />
+      {/* <RainyDaySection /> */}
+      {/* <RecentActivitySection /> */}
+      {/* <RelatedArticlesSection /> */}
       <AboutSection />
       <Footer />
     </main>

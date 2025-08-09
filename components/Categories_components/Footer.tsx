@@ -1,10 +1,13 @@
 'use client';
 
+import { useCategories } from '@/hooks/useCategories';
+
 const cities = [
   'Agra', 'Ahmedabad', 'Ajmer', 'Aligarh', 'Allahabad', 'Amritsar', 'Aurangabad', 'Bangalore', 'Bareilly', 'Belgaum', 'Bhavnagar', 'Bhopal', 'Bhubaneswar', 'Bikaner', 'Bilaspur', 'Chandigarh', 'Chennai', 'Coimbatore', 'Cuttack', 'Dehradun', 'Delhi', 'Dhanbad', 'Durgapur', 'Erode', 'Faridabad', 'Firozabad', 'Ghaziabad', 'Gorakhpur', 'Guntur', 'Gurgaon', 'Guwahati', 'Gwalior', 'Hubli', 'Hyderabad', 'Indore', 'Jabalpur', 'Jaipur', 'Jalandhar', 'Jammu', 'Jamnagar', 'Jamshedpur', 'Jodhpur', 'Kanpur', 'Kochi', 'Kolhapur', 'Kolkata', 'Kota', 'Kozhikode', 'Lucknow', 'Ludhiana', 'Madurai', 'Mangalore', 'Meerut', 'Moradabad', 'Mumbai', 'Mysore', 'Nagpur', 'Nashik', 'Navi Mumbai', 'Noida', 'Patna', 'Pondicherry', 'Pune', 'Raipur', 'Rajkot', 'Ranchi', 'Salem', 'Surat', 'Thane', 'Thiruvananthapuram', 'Thrissur', 'Tiruchirappalli', 'Tirunelveli', 'Udaipur', 'Vadodara', 'Varanasi', 'Vijayawada', 'Visakhapatnam', 'Warangal'
 ];
 
-const quickLinks = [
+// Static links that are not categories
+const staticLinks = [
   'About us', 'Advertise', 'Investor Relations', 'Media', 'We\'re hiring', 'Testimonials', 'Customer Care', 'Feedback', 'Free Listing', 'Business Badge', 'What\'s New', 'Jd Collection', 'Report a Bug', 'Client Success Videos', 'B2B Sitemap', 'B2B India Sitemap', 'Sitemap', 'Return & Exchange Policy'
 ];
 
@@ -20,6 +23,14 @@ const jdVerticals = [
 ];
 
 export default function Footer() {
+  const { categories, loading, error } = useCategories();
+
+  // Create dynamic quick links combining API categories with static links
+  const quickLinks = [
+    ...(categories.length > 0 ? categories.slice(0, 8).map(cat => cat.name) : []),
+    ...staticLinks
+  ];
+
   return (
     <footer className="bg-gray-50 border-t">
       <div className="max-w-7xl mx-auto px-4 py-6 md:py-8">
@@ -33,17 +44,32 @@ export default function Footer() {
         {/* Links Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
           <div>
-            <h4 className="font-semibold text-gray-800 mb-3 md:mb-4 text-sm md:text-base">Quick Links</h4>
+            <h4 className="font-semibold text-gray-800 mb-3 md:mb-4 text-sm md:text-base">
+              Quick Links {loading && <span className="text-xs text-gray-400">(Loading...)</span>}
+            </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 md:gap-2">
               {quickLinks.map((link, index) => (
-                <a key={index} href="#" className="text-xs md:text-sm text-gray-600 hover:text-blue-600 py-1">
+                <a 
+                  key={index} 
+                  href="#" 
+                  onClick={(e) => {
+                    if (link === 'Free Listing') {
+                      e.preventDefault();
+                      window.open('https://seller.localzarurat.com', '_blank');
+                    }
+                  }}
+                  className="text-xs md:text-sm text-gray-600 hover:text-blue-600 py-1 cursor-pointer"
+                >
                   {link}
                 </a>
               ))}
             </div>
+            {error && (
+              <p className="text-xs text-red-500 mt-2">Failed to load categories. Showing static links.</p>
+            )}
           </div>
 
-          <div>
+          {/* <div>
             <h4 className="font-semibold text-gray-800 mb-3 md:mb-4 text-sm md:text-base">JD Verticals</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 md:gap-2">
               {jdVerticals.map((vertical, index) => (
@@ -52,7 +78,7 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Copyright */}
