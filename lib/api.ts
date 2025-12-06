@@ -110,8 +110,8 @@ export interface ProfileUpdateRequest {
   profileImage?: string;
 }
 
-// const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.localzarurat.com/api';
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3110/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.localzarurat.com/api';
+// const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3110/api';
 
 // Enhanced error handling utility
 class ApiError extends Error {
